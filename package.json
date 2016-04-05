@@ -1,0 +1,27 @@
+{
+  "name": "wearable-ble",
+  "version": "1.0.0",
+  "description": "A node module that facilitates communication with a wearable in the spotlight project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordankid93/wearable-ble.git"
+  },
+  "keywords": [
+    "spotlight",
+    "wearable"
+  ],
+  "author": "Isaiah Smit (@jordankid93)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jordankid93/wearable-ble/issues"
+  },
+  "homepage": "https://github.com/jordankid93/wearable-ble#readme",
+  "dependencies": {
+    "feather-ble": "^1.0.4",
+    "underscore": "^1.8.3"
+  }
+}
