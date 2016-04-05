@@ -181,12 +181,6 @@ var Wearable = function(peripheral){
 				return;
 			}
 
-			// Disconnect from feather if RSSI is too low
-			if (rssi < CONSTANTS.MINIMUM_RSSI_TO_STAY_CONNECTED) {
-				_self.disconnect();
-				return;
-			}
-
 			// Trigger RSSI callbacks
 			_.each(_self._listeners.rssi, function(callback){
 				callback(err, rssi, function(strength){
