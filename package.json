@@ -1,6 +1,6 @@
 {
   "name": "wearable-ble",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A node module that facilitates communication with a wearable in the spotlight project",
   "main": "wearable.js",
   "scripts": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/jordankid93/wearable-ble#readme",
   "dependencies": {
-    "feather-ble": "^1.0.5",
+    "feather-ble": "^1.0.6",
     "underscore": "^1.8.3"
   }
 }
