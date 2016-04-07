@@ -17,12 +17,14 @@ var Wearable = function(settings){
 	var rssiRate = (settings && settings.rssiRate) || CONSTANTS.OVERRIDE_REQUEST_RSSI_UPDATE_RATE
 
 	// Noble Peripheral Object
-	this._feather = settings && settings.peripheral && new Feather({
-		peripheral: settings.peripheral,
-		verbose: verbose,
-		rssi: rssi,
-		rssi_update_rate: rssiRate
-	});
+	if (settings && settings.peripheral) {
+		this._feather = new Feather({
+			peripheral: settings.peripheral,
+			verbose: verbose,
+			rssi: rssi,
+			rssi_update_rate: rssiRate
+		});
+	}
 
 	// Wearable's UserID
 	this._userID;
