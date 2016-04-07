@@ -11,5 +11,5 @@ module.exports = {
 	REQUEST_RSSI_UPDATES: true,
 
 	// Override rate at which RSSI should be updated
-	OVERRIDE_REQUEST_RSSI_UPDATE_RATE: 100
+	OVERRIDE_REQUEST_RSSI_UPDATE_RATE: 500
 };
