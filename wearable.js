@@ -17,13 +17,21 @@ var Wearable = function(settings){
 	var rssiRate = (settings && settings.rssiRate) || CONSTANTS.OVERRIDE_REQUEST_RSSI_UPDATE_RATE;
 	var peripheral = (settings && settings.peripheral) || null;
 
+	var featherSettings = {};
+	featherSettings.verbose = (settings && settings.verbose) || CONSTANTS.START_FEATHER_IN_VERBOSE_MODE;
+	featherSettings.rssi = (settings && settings.rssi) || CONSTANTS.REQUEST_RSSI_UPDATES;
+	featherSettings.rssiRate = (settings && settings.rssiRate) || CONSTANTS.OVERRIDE_REQUEST_RSSI_UPDATE_RATE;
+	featherSettings.peripheral = (settings && settings.peripheral) || null;
+
+	//if (settings && settings.verbose)
+
 	// Noble Peripheral Object
-	this._feather = new Feather({
-		peripheral: peripheral,
-		verbose: verbose,
-		rssi: rssi,
-		rssi_update_rate: rssiRate
-	});
+	if (!peripheral) {
+		this.feather = new Feather();
+	}
+	else {
+		this._feather = new Feather(featherSettings);
+	}
 
 	// Wearable's UserID
 	this._userID;
