@@ -3,7 +3,8 @@ var _ = require('underscore');
 
 var CONSTANTS = require('./constants.js');
 
-var Wearable = function(peripheral){
+var Wearable = function(settings){
+
 
 	/*
 		VARIABLES
@@ -11,12 +12,16 @@ var Wearable = function(peripheral){
 	// Reference to "this"
 	var _self = this;
 
+	var verbose = (settings && settings.verbose) || CONSTANTS.START_FEATHER_IN_VERBOSE_MODE;
+	var rssi = (settings && settings.rssi) || CONSTANTS.REQUEST_RSSI_UPDATES;
+	var rssiRate = (settings && settings.rssiRate) || CONSTANTS.OVERRIDE_REQUEST_RSSI_UPDATE_RATE
+
 	// Noble Peripheral Object
 	this._feather = new Feather({
-		peripheral: peripheral,
-		verbose: CONSTANTS.START_FEATHER_IN_VERBOSE_MODE,
-		rssi: CONSTANTS.REQUEST_RSSI_UPDATES
-		// rssi_update_rate: CONSTANTS.OVERRIDE_REQUEST_RSSI_UPDATE_RATE
+		peripheral: settings.peripheral,
+		verbose: verbose,
+		rssi: rssi,
+		rssi_update_rate: rssiRate
 	});
 
 	// Wearable's UserID
