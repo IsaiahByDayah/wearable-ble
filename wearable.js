@@ -16,8 +16,8 @@ var Wearable = function(peripheral){
 	this._feather = new Feather({
 		peripheral: peripheral,
 		verbose: CONSTANTS.START_FEATHER_IN_VERBOSE_MODE,
-		rssi: CONSTANTS.REQUEST_RSSI_UPDATES
-		//rssi_update_rate: CONSTANTS.OVERRIDE_REQUEST_RSSI_UPDATE_RATE
+		rssi: CONSTANTS.REQUEST_RSSI_UPDATES,
+		rssi_update_rate: CONSTANTS.OVERRIDE_REQUEST_RSSI_UPDATE_RATE
 	});
 
 	// Wearable's UserID
