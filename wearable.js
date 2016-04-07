@@ -14,17 +14,16 @@ var Wearable = function(settings){
 
 	var verbose = (settings && settings.verbose) || CONSTANTS.START_FEATHER_IN_VERBOSE_MODE;
 	var rssi = (settings && settings.rssi) || CONSTANTS.REQUEST_RSSI_UPDATES;
-	var rssiRate = (settings && settings.rssiRate) || CONSTANTS.OVERRIDE_REQUEST_RSSI_UPDATE_RATE
+	var rssiRate = (settings && settings.rssiRate) || CONSTANTS.OVERRIDE_REQUEST_RSSI_UPDATE_RATE;
+	var peripheral = (settings && settings.peripheral) || null;
 
 	// Noble Peripheral Object
-	if (settings && settings.peripheral) {
-		this._feather = new Feather({
-			peripheral: settings.peripheral,
-			verbose: verbose,
-			rssi: rssi,
-			rssi_update_rate: rssiRate
-		});
-	}
+	this._feather = new Feather({
+		peripheral: peripheral,
+		verbose: verbose,
+		rssi: rssi,
+		rssi_update_rate: rssiRate
+	});
 
 	// Wearable's UserID
 	this._userID;
