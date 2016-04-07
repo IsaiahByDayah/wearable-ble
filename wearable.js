@@ -3,7 +3,7 @@ var _ = require('underscore');
 
 var CONSTANTS = require('./constants.js');
 
-var Wearable = function(settings){
+var Wearable = function(peripheral){
 
 
 	/*
@@ -12,26 +12,13 @@ var Wearable = function(settings){
 	// Reference to "this"
 	var _self = this;
 
-	var verbose = (settings && settings.verbose) || CONSTANTS.START_FEATHER_IN_VERBOSE_MODE;
-	var rssi = (settings && settings.rssi) || CONSTANTS.REQUEST_RSSI_UPDATES;
-	var rssiRate = (settings && settings.rssiRate) || CONSTANTS.OVERRIDE_REQUEST_RSSI_UPDATE_RATE;
-	var peripheral = (settings && settings.peripheral) || null;
-
-	var featherSettings = {};
-	featherSettings.verbose = (settings && settings.verbose) || CONSTANTS.START_FEATHER_IN_VERBOSE_MODE;
-	featherSettings.rssi = (settings && settings.rssi) || CONSTANTS.REQUEST_RSSI_UPDATES;
-	featherSettings.rssiRate = (settings && settings.rssiRate) || CONSTANTS.OVERRIDE_REQUEST_RSSI_UPDATE_RATE;
-	featherSettings.peripheral = (settings && settings.peripheral) || null;
-
-	//if (settings && settings.verbose)
-
 	// Noble Peripheral Object
-	if (!peripheral) {
-		this.feather = new Feather();
-	}
-	else {
-		this._feather = new Feather(featherSettings);
-	}
+	this._feather = new Feather({
+		peripheral: peripheral,
+		verbose: CONSTANTS.START_FEATHER_IN_VERBOSE_MODE,
+		rssi: CONSTANTS.REQUEST_RSSI_UPDATES,
+		rssi_update_rate: CONSTANTS.OVERRIDE_REQUEST_RSSI_UPDATE_RATE
+	});
 
 	// Wearable's UserID
 	this._userID;
