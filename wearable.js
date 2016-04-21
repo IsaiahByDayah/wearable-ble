@@ -32,6 +32,9 @@ var Wearable = function(peripheral){
 	// Timestamp for when feather was disconnected
 	this._end;
 
+	// If the wearable likes this exhibit
+	this._likesExhibit;
+
 	// Listener Event callbacks
 	this._listeners = {
 		// When wearable is connected and ready
