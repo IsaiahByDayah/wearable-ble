@@ -88,12 +88,16 @@ var Wearable = function(peripheral){
 
 			_self._start = new Date();
 
-			var requestUserIDMessage = JSON.stringify({
-				msgType: "UserID",
+			// var requestUserIDMessage = JSON.stringify({
+			// 	msgType: "UserID",
+			// 	request: "GET"
+			// });
+
+			// _self._feather.sendMessage(requestUserIDMessage);
+
+			_self.sendMessage("UserID", {
 				request: "GET"
 			});
-
-			_self._feather.sendMessage(requestUserIDMessage);
 		}
 
 		// Callback for when feather is disconnected
@@ -186,15 +190,33 @@ var Wearable = function(peripheral){
 			_.each(_self._listeners.rssi, function(callback){
 				callback(err, rssi, function(strength){
 
-					var signalStrengthMessage = JSON.stringify({
-						msgType: "SignalStrength",
-						signalStrengthValue: strength
-					});
+					// var signalStrengthMessage = JSON.stringify({
+					// 	msgType: "SignalStrength",
+					// 	signalStrengthValue: strength
+					// });
 
-					_self._feather.sendMessage(signalStrengthMessage);
+					// _self._feather.sendMessage(signalStrengthMessage);
+
+					_self.sendMessage("SignalStrength", strength);
 				});
 			});
 		}
+	};
+
+	// Sends a haptic signal to the wearable to vibrate x times (optional, defaults to 1)
+	this.sendHaptic = function(times) {
+		var data = times || 1;
+		_self.sendMessage("Haptic", data);
+	};
+
+	// Sends a message to the wearable
+	this.sendMessage = function(msgType, data) {
+		var message = JSON.stringify({
+			msgType: msgType,
+			data: data
+		});
+
+		_self._feather.sendMessage(message);
 	};
 
 	// Disconnect from the feather
