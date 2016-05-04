@@ -212,6 +212,17 @@ var Wearable = function(peripheral){
 		_self.sendMessage("Haptic", data);
 	};
 
+	// Send a message to set the color of the LED ring
+	this.setColor = function(red, green, blue) {
+		_self.sendMessage("SetLights", {
+			color: {
+				R: red,
+				G: green,
+				B: blue
+			}
+		});
+	};
+
 	// Sends a message to the wearable
 	this.sendMessage = function(msgType, data) {
 		var message = JSON.stringify({
