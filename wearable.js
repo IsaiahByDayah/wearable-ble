@@ -75,7 +75,7 @@ var Wearable = function(peripheral){
 
 		_self._feather.on("rssi", onRssiUpdate);
 
-		_self._readyTimeout = setTimeout(readyTimeout, CONSTANTS.READY_TIMEOUT_DURATION);
+		_self._readyTimeout = setTimeout(readyTimeout, CONSTANTS.READY_TIMEOUT_DURATION*1000);
 
 		_self._feather.setup();
 

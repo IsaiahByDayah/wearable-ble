@@ -14,5 +14,5 @@ module.exports = {
 	OVERRIDE_REQUEST_RSSI_UPDATE_RATE: 2500,
 
 	// How long to allow a feather to get setup before canceling
-	READY_TIMEOUT_DURATION: 15
+	READY_TIMEOUT_DURATION: 5
 };
