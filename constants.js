@@ -11,5 +11,8 @@ module.exports = {
 	REQUEST_RSSI_UPDATES: true,
 
 	// Override rate at which RSSI should be updated
-	OVERRIDE_REQUEST_RSSI_UPDATE_RATE: 2500
+	OVERRIDE_REQUEST_RSSI_UPDATE_RATE: 2500,
+
+	// How long to allow a feather to get setup before canceling
+	READY_TIMEOUT_DURATION: 5
 };

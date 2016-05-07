@@ -35,6 +35,9 @@ var Wearable = function(peripheral){
 	// If the wearable likes this exhibit
 	this._likesExhibit;
 
+	// Timeout for waiting on ready
+	this._readyTimeout;
+
 	// Listener Event callbacks
 	this._listeners = {
 		// When wearable is connected and ready
@@ -72,6 +75,8 @@ var Wearable = function(peripheral){
 
 		_self._feather.on("rssi", onRssiUpdate);
 
+		_self._readyTimeout = setTimeout(readyTimeout, CONSTANTS.READY_TIMEOUT_DURATION);
+
 		_self._feather.setup();
 
 		// Triggers callbacks of type 'e' passing along err
@@ -85,6 +90,7 @@ var Wearable = function(peripheral){
 		//   Requests UserID from feather
 		function onFeatherReady(err){
 			if (err) {
+				clearTimeout(_self._readyTimeout);
 				triggerSimpleCallbacks("ready", err);
 				return;
 			}
@@ -101,6 +107,11 @@ var Wearable = function(peripheral){
 			_self.sendMessage("UserID", {
 				request: "GET"
 			});
+		}
+
+		function readyTimeout(){
+			var err = new Error("Took too long to become ready");
+			triggerSimpleCallbacks("ready", err);
 		}
 
 		// Callback for when feather is disconnected
@@ -141,6 +152,8 @@ var Wearable = function(peripheral){
 
 			function userIDRecieved(message){
 				_self._userID = message.userID;
+
+				clearTimeout(_self._readyTimeout);
 
 				if (_self._userID && _self._userID.trim() != "") {
 					_self._ready = true;
