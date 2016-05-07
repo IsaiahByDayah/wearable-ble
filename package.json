@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/jordankid93/wearable-ble#readme",
   "dependencies": {
-    "feather-ble": "^1.0.6",
+    "feather-ble": "^1.1.1",
     "underscore": "^1.8.3"
   }
 }

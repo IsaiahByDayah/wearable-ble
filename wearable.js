@@ -230,11 +230,6 @@ var Wearable = function(peripheral){
 			data: data
 		});
 
-		if (! _self._feather._connected) {
-			// We're not connected, don't try to send message
-			return;
-		}
-
 		_self._feather.sendMessage(message);
 	};
 
