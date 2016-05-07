@@ -142,7 +142,7 @@ var Wearable = function(peripheral){
 			function userIDRecieved(message){
 				_self._userID = message.userID;
 
-				if (_self._userID) {
+				if (_self._userID && _self._userID.trim() != "") {
 					_self._ready = true;
 					triggerSimpleCallbacks("ready", null);
 				}
