@@ -89,7 +89,7 @@ var Wearable = function(peripheral){
 				return;
 			}
 
-			_self._start = new Date();
+			_self._start = new Date().getTime();
 
 			// var requestUserIDMessage = JSON.stringify({
 			// 	msgType: "UserID",
@@ -106,7 +106,7 @@ var Wearable = function(peripheral){
 		// Callback for when feather is disconnected
 		//   Trigger disconnect callbacks
 		function onFeatherDisconnected(){
-			_self._end = new Date();
+			_self._end = new Date().getTime();
 			triggerSimpleCallbacks("disconnect", null);
 		}
 
